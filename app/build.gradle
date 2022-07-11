@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -41,9 +44,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     // OkHttp BOM and its version
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation platform("com.squareup.okhttp3:okhttp-bom:4.10.0")
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor"
 
     // Hilt
     def hilt_version = "2.38.1"
@@ -52,6 +55,9 @@ dependencies {
 
     // Lifecycle things (coroutines)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+
+    // Coil (image loading)
+    implementation "io.coil-kt:coil:2.1.0"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
