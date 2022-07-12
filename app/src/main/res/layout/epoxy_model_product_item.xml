@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="12dp"
+        app:layout_constraintBottom_toTopOf="@id/productDescriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/productImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@color/purple_100"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
+                tools:src="@tools:sample/backgrounds/scenic[2]" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/productImageViewLoadingProgressBar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:indeterminateOnly="true"
+                app:layout_constraintBottom_toBottomOf="@id/productImageView"
+                app:layout_constraintEnd_toEndOf="@id/productImageView"
+                app:layout_constraintStart_toStartOf="@id/productImageView"
+                app:layout_constraintTop_toTopOf="@id/productImageView" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/favoriteImageView"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_round_favorite_border_24"
+                app:iconGravity="textEnd"
+                app:iconSize="12dp"
+                app:layout_constraintEnd_toEndOf="@id/productImageView"
+                app:layout_constraintTop_toTopOf="@id/productImageView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/purple_700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/productImageView"
+                app:layout_constraintTop_toTopOf="@id/productImageView"
+                tools:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productCategoryTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="@id/productTitleTextView"
+                app:layout_constraintStart_toStartOf="@id/productTitleTextView"
+                app:layout_constraintTop_toBottomOf="@id/productTitleTextView"
+                tools:text="men's clothing" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productPriceTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/purple_500"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@id/addToCartButton"
+                app:layout_constraintStart_toStartOf="@id/productTitleTextView"
+                app:layout_constraintTop_toTopOf="@id/addToCartButton"
+                tools:text="$109.95" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addToCartButton"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="68dp"
+                android:layout_height="34dp"
+                android:layout_margin="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="@dimen/corner_radius"
+                app:icon="@drawable/ic_shopping_cart_24"
+                app:iconGravity="textEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/inCartView"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:backgroundTint="@color/teal_200"
+                app:icon="@drawable/ic_round_check_24"
+                app:iconGravity="textEnd"
+                app:iconSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/addToCartButton"
+                app:layout_constraintEnd_toStartOf="@id/addToCartButton"
+                app:layout_constraintStart_toStartOf="@id/addToCartButton"
+                app:layout_constraintTop_toTopOf="@id/addToCartButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/productDescriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/purple_700"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="@id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        tools:text="Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
