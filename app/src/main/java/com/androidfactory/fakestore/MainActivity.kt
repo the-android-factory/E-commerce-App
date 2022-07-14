@@ -10,6 +10,7 @@ import com.androidfactory.fakestore.model.mapper.ProductMapper
 import com.androidfactory.fakestore.model.network.NetworkProduct
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val controller = ProductEpoxyController()
         binding.epoxyRecyclerView.setController(controller)
+        controller.setData(emptyList())
 
         lifecycleScope.launchWhenStarted {
             val response: Response<List<NetworkProduct>> = productsService.getAllProducts()
