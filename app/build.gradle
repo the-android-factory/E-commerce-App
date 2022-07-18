@@ -55,6 +55,8 @@ dependencies {
 
     // Lifecycle things (coroutines)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
 
     // Coil (image loading)
     implementation "io.coil-kt:coil:2.1.0"
