@@ -1,7 +1,5 @@
 package com.androidfactory.fakestore
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidfactory.fakestore.model.domain.Product
@@ -15,7 +13,7 @@ import javax.inject.Inject
 class MainActivityViewModel @Inject constructor(
     val store: Store<ApplicationState>,
     private val productsRepository: ProductsRepository
-): ViewModel() {
+) : ViewModel() {
 
     fun refreshProducts() = viewModelScope.launch {
         val products: List<Product> = productsRepository.fetchAllProducts()
