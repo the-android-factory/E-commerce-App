@@ -6,6 +6,7 @@ import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +22,11 @@ class MainActivityViewModel @Inject constructor(
             return@update applicationState.copy(
                 products = products
             )
+        }
+
+        delay(5000)
+        store.update {
+            return@update it.copy(favoriteProductIds = setOf(1, 2, 4))
         }
     }
 }

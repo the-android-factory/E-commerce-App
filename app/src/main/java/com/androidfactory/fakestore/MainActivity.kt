@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.androidfactory.fakestore.databinding.ActivityMainBinding
+import com.androidfactory.fakestore.model.ui.UiProduct
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 
@@ -23,14 +25,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val controller = ProductEpoxyController()
+        val controller = UiProductEpoxyController()
         binding.epoxyRecyclerView.setController(controller)
         controller.setData(emptyList())
 
-        viewModel.store.stateFlow.map {
-            it.products
-        }.distinctUntilChanged().asLiveData().observe(this) { products ->
-            controller.setData(products)
+        combine(
+            viewModel.store.stateFlow.map { it.products },
+            viewModel.store.stateFlow.map { it.favoriteProductIds }
+        ) { listOfProducts, setOfFavoriteIds ->
+            listOfProducts.map { product ->
+                UiProduct(product = product, isFavorite = setOfFavoriteIds.contains(product.id))
+            }
+        }.distinctUntilChanged().asLiveData().observe(this) { uiProducts ->
+            controller.setData(uiProducts)
         }
 
         viewModel.refreshProducts()
