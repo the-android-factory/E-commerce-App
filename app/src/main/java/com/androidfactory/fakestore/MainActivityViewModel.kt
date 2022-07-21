@@ -23,10 +23,5 @@ class MainActivityViewModel @Inject constructor(
                 products = products
             )
         }
-
-        delay(5000)
-        store.update {
-            return@update it.copy(favoriteProductIds = setOf(1, 2, 4))
-        }
     }
 }
