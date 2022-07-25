@@ -68,6 +68,11 @@ dependencies {
     // Facebook shimmer (loading state)
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    // Jetpack Navigation
+    def nav_version = "2.5.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'

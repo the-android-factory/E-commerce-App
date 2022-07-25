@@ -6,7 +6,7 @@ import com.androidfactory.fakestore.model.ui.UiProduct
 import kotlinx.coroutines.launch
 
 class UiProductEpoxyController(
-    private val viewModel: MainActivityViewModel
+    private val viewModel: ProductsListViewModel
 ): TypedEpoxyController<List<UiProduct>>() {
 
     override fun buildModels(data: List<UiProduct>?) {

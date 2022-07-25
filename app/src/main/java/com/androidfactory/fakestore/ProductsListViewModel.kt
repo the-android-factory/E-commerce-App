@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class ProductsListViewModel @Inject constructor(
     val store: Store<ApplicationState>,
     private val productsRepository: ProductsRepository
 ) : ViewModel() {
