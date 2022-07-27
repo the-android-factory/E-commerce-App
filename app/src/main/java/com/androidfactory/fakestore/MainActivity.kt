@@ -29,29 +29,4 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
-
-    private fun setupListeners() {
-        /*binding.cardView.setOnClickListener {
-            binding.productDescriptionTextView.apply {
-                isVisible = !isVisible
-            }
-        }
-
-        binding.addToCartButton.setOnClickListener {
-            binding.inCartView.apply {
-                isVisible = !isVisible
-            }
-        }
-
-        var isFavorite = false
-        binding.favoriteImageView.setOnClickListener {
-            val imageRes = if (isFavorite) {
-                R.drawable.ic_round_favorite_border_24
-            } else {
-                R.drawable.ic_round_favorite_24
-            }
-            binding.favoriteImageView.setIconResource(imageRes)
-            isFavorite = !isFavorite
-        }*/
-    }
 }
