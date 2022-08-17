@@ -2,6 +2,7 @@ package com.androidfactory.fakestore
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.androidfactory.fakestore.model.domain.Filter
 import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
@@ -20,7 +21,13 @@ class ProductsListViewModel @Inject constructor(
         val products: List<Product> = productsRepository.fetchAllProducts()
         store.update { applicationState ->
             return@update applicationState.copy(
-                products = products
+                products = products,
+                productFilterInfo = ApplicationState.ProductFilterInfo(
+                    filters = products.map {
+                        Filter(value = it.category, displayText = it.category) // todo
+                    }.toSet(),
+                    selectedFilter = null
+                )
             )
         }
     }

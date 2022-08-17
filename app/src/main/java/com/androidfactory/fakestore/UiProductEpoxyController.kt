@@ -1,16 +1,18 @@
 package com.androidfactory.fakestore
 
 import androidx.lifecycle.viewModelScope
+import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.TypedEpoxyController
+import com.androidfactory.fakestore.model.domain.Filter
 import com.androidfactory.fakestore.model.ui.UiProduct
 import kotlinx.coroutines.launch
 
 class UiProductEpoxyController(
     private val viewModel: ProductsListViewModel
-): TypedEpoxyController<List<UiProduct>>() {
+): TypedEpoxyController<ProductsListFragmentUiState>() {
 
-    override fun buildModels(data: List<UiProduct>?) {
-        if (data.isNullOrEmpty()) {
+    override fun buildModels(data: ProductsListFragmentUiState?) {
+        if (data == null) {
             repeat(7) {
                 val epoxyId = it + 1
                 UiProductEpoxyModel(
@@ -22,7 +24,13 @@ class UiProductEpoxyController(
             return
         }
 
-        data.forEach { uiProduct ->
+        val uiFilterModels = data.filters.map { uiFilter ->
+            UiProductFilterEpoxyModel(uiFilter = uiFilter, onFilterSelected = ::onFilterSelected)
+                .id(uiFilter.filter.value)
+        }
+        CarouselModel_().models(uiFilterModels).id("filters").addTo(this)
+
+        data.products.forEach { uiProduct ->
             UiProductEpoxyModel(
                 uiProduct = uiProduct,
                 onFavoriteIconClicked = ::onFavoriteIconClicked,
@@ -55,6 +63,23 @@ class UiProductEpoxyController(
                     currentExpandedIds + setOf(productId)
                 }
                 return@update currentState.copy(expandedProductIds = newExpandedIds)
+            }
+        }
+    }
+
+    private fun onFilterSelected(filter: Filter) {
+        viewModel.viewModelScope.launch {
+            viewModel.store.update { currentState ->
+                val currentlySelectedFilter = currentState.productFilterInfo.selectedFilter
+                return@update currentState.copy(
+                    productFilterInfo = currentState.productFilterInfo.copy(
+                        selectedFilter = if (currentlySelectedFilter != filter) {
+                            filter
+                        } else {
+                            null
+                        }
+                    )
+                )
             }
         }
     }
