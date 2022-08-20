@@ -17,8 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:includeFontPadding="false"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp"
+        android:textSize="14sp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         android:textColor="@color/white"
         tools:text="jewelry" />
 
