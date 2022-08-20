@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     app:cardBackgroundColor="@color/purple_200"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="0dp"
@@ -15,12 +14,11 @@
         android:id="@+id/filterNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:includeFontPadding="false"
-        android:textSize="14sp"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:textColor="@color/white"
+        android:textSize="14sp"
         tools:text="jewelry" />
 
 </com.google.android.material.card.MaterialCardView>

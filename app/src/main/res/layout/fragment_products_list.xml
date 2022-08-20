@@ -12,10 +12,8 @@
         android:layout_height="match_parent"
         android:clipChildren="false"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="24dp"
-        app:itemSpacing="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="7"
         tools:listitem="@layout/epoxy_model_product_item" />

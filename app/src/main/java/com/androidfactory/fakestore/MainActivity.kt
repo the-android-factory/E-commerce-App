@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.airbnb.epoxy.Carousel
 import com.androidfactory.fakestore.databinding.ActivityMainBinding
 import com.androidfactory.fakestore.model.ui.UiProduct
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,5 +38,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
+        // To prevent snapping in carousels
+        Carousel.setDefaultGlobalSnapHelperFactory(null)
     }
 }
