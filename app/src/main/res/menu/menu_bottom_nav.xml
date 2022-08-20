@@ -3,7 +3,11 @@
     <item
         android:id="@+id/productsListFragment"
         android:icon="@drawable/ic_list_24"
-        android:title="List" />
+        android:title="Products" />
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="Cart" />
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_person_24"

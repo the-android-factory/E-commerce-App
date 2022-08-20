@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/productsListFragment">
 
@@ -16,5 +16,11 @@
         android:name="com.androidfactory.fakestore.home.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.androidfactory.fakestore.home.cart.CartFragment"
+        android:label="Your cart"
+        tools:layout="@layout/fragment_cart" />
 
 </navigation>

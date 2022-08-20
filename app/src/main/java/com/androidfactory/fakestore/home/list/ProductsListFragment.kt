@@ -42,8 +42,9 @@ class ProductsListFragment : Fragment() {
             viewModel.store.stateFlow.map { it.products },
             viewModel.store.stateFlow.map { it.favoriteProductIds },
             viewModel.store.stateFlow.map { it.expandedProductIds },
-            viewModel.store.stateFlow.map { it.productFilterInfo }
-        ) { listOfProducts, setOfFavoriteIds, setOfExpandedProductIds, productFilterInfo ->
+            viewModel.store.stateFlow.map { it.productFilterInfo },
+            viewModel.store.stateFlow.map { it.inCartProductIds }
+        ) { listOfProducts, setOfFavoriteIds, setOfExpandedProductIds, productFilterInfo, inCartProductIds ->
 
             if (listOfProducts.isEmpty()) {
                 return@combine ProductsListFragmentUiState.Loading
@@ -53,7 +54,8 @@ class ProductsListFragment : Fragment() {
                 UiProduct(
                     product = product,
                     isFavorite = setOfFavoriteIds.contains(product.id),
-                    isExpanded = setOfExpandedProductIds.contains(product.id)
+                    isExpanded = setOfExpandedProductIds.contains(product.id),
+                    isInCart = inCartProductIds.contains(product.id)
                 )
             }
 

@@ -12,15 +12,21 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.airbnb.epoxy.Carousel
 import com.androidfactory.fakestore.databinding.ActivityMainBinding
 import com.androidfactory.fakestore.model.ui.UiProduct
+import com.androidfactory.fakestore.redux.ApplicationState
+import com.androidfactory.fakestore.redux.Store
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var store: Store<ApplicationState>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = setOf(
                 R.id.productsListFragment,
-                R.id.profileFragment
+                R.id.profileFragment,
+                R.id.cartFragment
             )
         )
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -41,5 +48,14 @@ class MainActivity : AppCompatActivity() {
 
         // To prevent snapping in carousels
         Carousel.setDefaultGlobalSnapHelperFactory(null)
+
+        store.stateFlow.map {
+            it.inCartProductIds.size
+        }.distinctUntilChanged().asLiveData().observe(this) { numberOfProductsInCart ->
+            binding.bottomNavigationView.getOrCreateBadge(R.id.cartFragment).apply {
+                number = numberOfProductsInCart
+                isVisible = numberOfProductsInCart > 0
+            }
+        }
     }
 }
