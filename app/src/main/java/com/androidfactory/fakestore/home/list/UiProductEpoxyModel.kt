@@ -1,12 +1,12 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import coil.load
+import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.EpoxyModelProductItemBinding
 import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
-import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.model.ui.UiProduct
 import java.text.NumberFormat
 

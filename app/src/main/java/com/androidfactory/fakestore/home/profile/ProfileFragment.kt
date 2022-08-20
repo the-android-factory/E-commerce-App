@@ -1,10 +1,9 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {

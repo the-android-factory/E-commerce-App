@@ -1,13 +1,13 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.androidfactory.fakestore.hilt.repository.ProductsRepository
 import com.androidfactory.fakestore.model.domain.Filter
 import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.hilt.repository
 
 import com.androidfactory.fakestore.hilt.service.ProductsService
 import com.androidfactory.fakestore.model.domain.Product

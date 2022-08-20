@@ -1,6 +1,7 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import androidx.core.content.ContextCompat
+import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.EpoxyModelProductFilterBinding
 import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
 import com.androidfactory.fakestore.model.domain.Filter

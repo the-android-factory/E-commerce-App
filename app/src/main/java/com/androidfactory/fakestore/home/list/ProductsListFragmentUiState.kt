@@ -1,4 +1,4 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import com.androidfactory.fakestore.model.ui.UiFilter
 import com.androidfactory.fakestore.model.ui.UiProduct

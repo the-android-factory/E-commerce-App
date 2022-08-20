@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/productsListFragment"
-        android:name="com.androidfactory.fakestore.ProductsListFragment"
+        android:name="com.androidfactory.fakestore.home.list.ProductsListFragment"
         android:label="All products"
         tools:layout="@layout/fragment_products_list" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.androidfactory.fakestore.ProfileFragment"
+        android:name="com.androidfactory.fakestore.home.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 

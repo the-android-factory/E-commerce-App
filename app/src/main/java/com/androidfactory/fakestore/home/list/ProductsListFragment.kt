@@ -1,4 +1,4 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import android.os.Bundle
 import android.view.LayoutInflater

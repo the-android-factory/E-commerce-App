@@ -1,10 +1,9 @@
-package com.androidfactory.fakestore
+package com.androidfactory.fakestore.home.list
 
 import androidx.lifecycle.viewModelScope
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.TypedEpoxyController
 import com.androidfactory.fakestore.model.domain.Filter
-import com.androidfactory.fakestore.model.ui.UiProduct
 import kotlinx.coroutines.launch
 
 class UiProductEpoxyController(
