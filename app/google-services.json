@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253995120906",
+    "project_id": "fake-store-c1e6e",
+    "storage_bucket": "fake-store-c1e6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253995120906:android:d95a30ede8ad94e97e22f3",
+        "android_client_info": {
+          "package_name": "com.androidfactory.fakestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253995120906-sr1nos53kfj3t6ri3hvj7kn3m44c72hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5lmhT2z5OJy1KXEYjsqgUuklhH59pOt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253995120906-sr1nos53kfj3t6ri3hvj7kn3m44c72hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
