@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_100">
+    android:background="@color/purple_50">
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxyRecyclerView"
@@ -12,10 +12,9 @@
         android:layout_height="match_parent"
         android:clipChildren="false"
         android:orientation="vertical"
-        android:paddingTop="8dp"
         android:paddingBottom="24dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="7"
-        tools:listitem="@layout/epoxy_model_product_item" />
+        tools:listitem="@layout/epoxy_model_cart_product_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

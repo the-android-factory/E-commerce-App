@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/productImageView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:background="@color/purple_100"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
+        tools:src="@tools:sample/backgrounds/scenic[2]" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/productImageViewLoadingProgressBar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:indeterminateOnly="true"
+        app:layout_constraintBottom_toBottomOf="@id/productImageView"
+        app:layout_constraintEnd_toEndOf="@id/productImageView"
+        app:layout_constraintStart_toStartOf="@id/productImageView"
+        app:layout_constraintTop_toTopOf="@id/productImageView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favoriteImageView"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="6dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_round_favorite_border_24"
+        app:iconGravity="textEnd"
+        app:iconSize="12dp"
+        app:layout_constraintEnd_toEndOf="@id/productImageView"
+        app:layout_constraintTop_toTopOf="@id/productImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/productTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/purple_900"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/productImageView"
+        app:layout_constraintTop_toTopOf="@id/productImageView"
+        tools:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/deleteIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_twotone_delete_24"
+        app:tint="@color/black" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
