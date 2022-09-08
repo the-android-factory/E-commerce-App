@@ -18,17 +18,6 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
         tools:src="@tools:sample/backgrounds/scenic[2]" />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/productImageViewLoadingProgressBar"
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:indeterminateOnly="true"
-        app:layout_constraintBottom_toBottomOf="@id/productImageView"
-        app:layout_constraintEnd_toEndOf="@id/productImageView"
-        app:layout_constraintStart_toStartOf="@id/productImageView"
-        app:layout_constraintTop_toTopOf="@id/productImageView" />
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/favoriteImageView"
         style="@style/Widget.Material3.Button.Icon"
@@ -59,13 +48,14 @@
         tools:text="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/deleteIcon"
+        android:id="@+id/deleteIconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="6dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_twotone_delete_24"
-        app:tint="@color/black" />
+        app:srcCompat="@drawable/ic_twotone_delete_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

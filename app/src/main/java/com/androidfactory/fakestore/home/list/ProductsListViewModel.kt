@@ -7,6 +7,7 @@ import com.androidfactory.fakestore.model.domain.Filter
 import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
+import com.androidfactory.fakestore.redux.reducer.UiProductListReducer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductsListViewModel @Inject constructor(
     val store: Store<ApplicationState>,
+    val uiProductListReducer: UiProductListReducer,
     private val productsRepository: ProductsRepository,
     private val filterGenerator: FilterGenerator
 ) : ViewModel() {

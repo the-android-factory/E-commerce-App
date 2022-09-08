@@ -39,24 +39,12 @@ class ProductsListFragment : Fragment() {
         binding.epoxyRecyclerView.setController(controller)
 
         combine(
-            viewModel.store.stateFlow.map { it.products },
-            viewModel.store.stateFlow.map { it.favoriteProductIds },
-            viewModel.store.stateFlow.map { it.expandedProductIds },
+            viewModel.uiProductListReducer.reduce(viewModel.store),
             viewModel.store.stateFlow.map { it.productFilterInfo },
-            viewModel.store.stateFlow.map { it.inCartProductIds }
-        ) { listOfProducts, setOfFavoriteIds, setOfExpandedProductIds, productFilterInfo, inCartProductIds ->
+        ) { uiProducts, productFilterInfo ->
 
-            if (listOfProducts.isEmpty()) {
+            if (uiProducts.isEmpty()) {
                 return@combine ProductsListFragmentUiState.Loading
-            }
-
-            val uiProducts = listOfProducts.map { product ->
-                UiProduct(
-                    product = product,
-                    isFavorite = setOfFavoriteIds.contains(product.id),
-                    isExpanded = setOfExpandedProductIds.contains(product.id),
-                    isInCart = inCartProductIds.contains(product.id)
-                )
             }
 
             val uiFilters = productFilterInfo.filters.map { filter ->
