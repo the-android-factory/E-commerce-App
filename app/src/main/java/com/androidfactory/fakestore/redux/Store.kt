@@ -17,7 +17,7 @@ class Store<T>(initialState: T) {
         _stateFlow.value = newState
     }
 
-    suspend fun read(readBlock: (T) -> Unit) = mutex.withLock {
+    suspend fun <S> read(readBlock: (T) -> S) = mutex.withLock {
         readBlock(_stateFlow.value)
     }
 }

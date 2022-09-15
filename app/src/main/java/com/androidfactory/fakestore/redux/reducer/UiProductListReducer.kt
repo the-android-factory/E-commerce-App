@@ -1,15 +1,10 @@
 package com.androidfactory.fakestore.redux.reducer
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
-import com.androidfactory.fakestore.home.list.ProductsListFragmentUiState
-import com.androidfactory.fakestore.model.ui.UiFilter
 import com.androidfactory.fakestore.model.ui.UiProduct
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
