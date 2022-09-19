@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_rounded_12"
+    android:backgroundTint="@color/purple_100"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="2dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/minusImageView"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="4dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/quantityTextView"
+        app:layout_constraintEnd_toStartOf="@id/quantityTextView"
+        app:layout_constraintTop_toTopOf="@id/quantityTextView"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
+        app:srcCompat="@drawable/ic_remove_24"
+        app:tint="@color/purple_900" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="4" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/plusImageView"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="4dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/quantityTextView"
+        app:layout_constraintStart_toEndOf="@id/quantityTextView"
+        app:layout_constraintTop_toTopOf="@id/quantityTextView"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerRound"
+        app:srcCompat="@drawable/ic_add_24"
+        app:tint="@color/purple_900" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

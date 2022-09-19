@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/background_rounded_12.xml" value="0.2395" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_add_24.xml" value="0.276" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_list_24.xml" value="0.276" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_person_24.xml" value="0.276" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_remove_24.xml" value="0.276" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_round_favorite_24.xml" value="0.276" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_twotone_delete_24.xml" value="0.2705" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/activity_main.xml" value="0.47755834829443444" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_cart_empty.xml" value="0.515625" />
@@ -17,6 +22,7 @@
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/fragment_cart.xml" value="0.515625" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/fragment_products_list.xml" value="0.47755834829443444" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/fragment_profile.xml" value="0.38671875" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/layout_quantity_selector.xml" value="0.515625" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/menu/menu_bottom_nav.xml" value="0.5166666666666667" />
       </map>
     </option>

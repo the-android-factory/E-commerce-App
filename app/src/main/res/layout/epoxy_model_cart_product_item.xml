@@ -58,4 +58,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_twotone_delete_24" />
 
+    <include
+        android:id="@+id/quantityView"
+        layout="@layout/layout_quantity_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/deleteIconImageView"
+        app:layout_constraintStart_toStartOf="@id/productTitleTextView"
+        app:layout_constraintTop_toTopOf="@id/deleteIconImageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

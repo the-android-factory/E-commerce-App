@@ -80,6 +80,12 @@ class CartFragmentEpoxyController : TypedEpoxyController<CartFragment.UiState>()
             root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 setMargins(horizontalMargin, 0, horizontalMargin, 0)
             }
+
+            quantityView.apply {
+                quantityTextView.text = 9.toString()
+                minusImageView.setOnClickListener {  }
+                plusImageView.setOnClickListener {  }
+            }
         }
     }
 }
