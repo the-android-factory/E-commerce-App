@@ -1,6 +1,7 @@
 package com.androidfactory.fakestore
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -57,5 +58,9 @@ class MainActivity : AppCompatActivity() {
                 isVisible = numberOfProductsInCart > 0
             }
         }
+    }
+
+    fun navigateToTab(@IdRes destinationId: Int) {
+        binding.bottomNavigationView.selectedItemId = destinationId
     }
 }
