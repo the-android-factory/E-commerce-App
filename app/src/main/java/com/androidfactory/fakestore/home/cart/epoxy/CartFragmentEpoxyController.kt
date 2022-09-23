@@ -31,16 +31,16 @@ class CartFragmentEpoxyController(
                 }).id("empty_state").addTo(this)
             }
             is CartFragment.UiState.NonEmpty -> {
-                data.products.forEachIndexed { index, uiProduct ->
+                data.products.forEachIndexed { index, uiProductInCart ->
                     addVerticalStyling(index)
                     CartItemEpoxyModel(
-                        uiProduct = uiProduct,
+                        uiProductInCart = uiProductInCart,
                         horizontalMargin = 16.toPx(),
                         onFavoriteClicked = {
                             viewModel.viewModelScope.launch {
                                 viewModel.store.update {
                                     return@update viewModel.uiProductFavoriteUpdater.update(
-                                        productId = uiProduct.product.id,
+                                        productId = uiProductInCart.uiProduct.product.id,
                                         currentState = it
                                     )
                                 }
@@ -50,13 +50,23 @@ class CartFragmentEpoxyController(
                             viewModel.viewModelScope.launch {
                                 viewModel.store.update {
                                     return@update viewModel.uiProductInCartUpdater.update(
-                                        productId = uiProduct.product.id,
+                                        productId = uiProductInCart.uiProduct.product.id,
                                         currentState = it
                                     )
                                 }
                             }
+                        },
+                        onQuantityChanged = { newQuantity: Int ->
+                            if (newQuantity < 1) return@CartItemEpoxyModel
+                            viewModel.viewModelScope.launch {
+                                viewModel.store.update { currentState ->
+                                    val newMapEntry = uiProductInCart.uiProduct.product.id to newQuantity
+                                    val newMap = currentState.cartQuantitiesMap + newMapEntry
+                                    return@update currentState.copy(cartQuantitiesMap = newMap)
+                                }
+                            }
                         }
-                    ).id(uiProduct.product.id).addTo(this)
+                    ).id(uiProductInCart.uiProduct.product.id).addTo(this)
                 }
             }
         }

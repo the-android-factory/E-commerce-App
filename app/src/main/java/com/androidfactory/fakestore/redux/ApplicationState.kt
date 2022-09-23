@@ -8,7 +8,8 @@ data class ApplicationState(
     val productFilterInfo: ProductFilterInfo = ProductFilterInfo(),
     val favoriteProductIds: Set<Int> = emptySet(),
     val expandedProductIds: Set<Int> = emptySet(),
-    val inCartProductIds: Set<Int> = emptySet()
+    val inCartProductIds: Set<Int> = emptySet(),
+    val cartQuantitiesMap: Map<Int, Int> = emptyMap() // productId -> quantity
 ) {
     data class ProductFilterInfo(
         val filters: Set<Filter> = emptySet(),

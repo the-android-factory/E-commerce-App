@@ -13,6 +13,7 @@ import com.androidfactory.fakestore.databinding.FragmentCartBinding
 import com.androidfactory.fakestore.home.cart.epoxy.CartFragmentEpoxyController
 import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.model.ui.UiProduct
+import com.androidfactory.fakestore.model.ui.UiProductInCart
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -43,8 +44,17 @@ class CartFragment: Fragment() {
         })
         binding.epoxyRecyclerView.setController(epoxyController)
 
-        viewModel.uiProductListReducer.reduce(store = viewModel.store).map { uiProducts ->
+        val uiProductsInCartFlow = viewModel.uiProductListReducer.reduce(store = viewModel.store).map { uiProducts ->
             uiProducts.filter { it.isInCart }
+        }
+
+        combine(
+            uiProductsInCartFlow,
+            viewModel.store.stateFlow.map { it.cartQuantitiesMap }
+        ) { uiProducts, quantityMap ->
+            uiProducts.map {
+                UiProductInCart(uiProduct = it, quantity = quantityMap[it.product.id] ?: 1)
+            }
         }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) { uiProducts ->
             val viewState = if (uiProducts.isEmpty()) {
                 UiState.Empty
@@ -62,6 +72,6 @@ class CartFragment: Fragment() {
 
     sealed interface UiState {
         object Empty: UiState
-        data class NonEmpty(val products: List<UiProduct>): UiState
+        data class NonEmpty(val products: List<UiProductInCart>): UiState
     }
 }
