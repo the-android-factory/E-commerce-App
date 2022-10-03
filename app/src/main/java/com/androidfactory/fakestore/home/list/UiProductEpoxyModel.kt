@@ -9,6 +9,7 @@ import com.androidfactory.fakestore.databinding.EpoxyModelProductItemBinding
 import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
 import com.androidfactory.fakestore.model.ui.UiProduct
 import java.text.NumberFormat
+import kotlin.math.roundToInt
 
 data class UiProductEpoxyModel(
     val uiProduct: UiProduct?,
@@ -60,6 +61,9 @@ data class UiProductEpoxyModel(
                     productImageViewLoadingProgressBar.isGone = true
                 }
             }
+
+            ratingIndicator.progress = (uiProduct.product.rating.value * 10).roundToInt()
+            ratingTextView.text = "${uiProduct.product.rating.value}"
         } ?: shimmerLayout.startShimmer()
     }
 }
