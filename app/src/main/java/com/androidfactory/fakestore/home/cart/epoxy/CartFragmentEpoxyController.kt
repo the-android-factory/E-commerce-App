@@ -46,16 +46,6 @@ class CartFragmentEpoxyController(
                                 }
                             }
                         },
-                        onDeleteClicked = {
-                            viewModel.viewModelScope.launch {
-                                viewModel.store.update {
-                                    return@update viewModel.uiProductInCartUpdater.update(
-                                        productId = uiProductInCart.uiProduct.product.id,
-                                        currentState = it
-                                    )
-                                }
-                            }
-                        },
                         onQuantityChanged = { newQuantity: Int ->
                             if (newQuantity < 1) return@CartItemEpoxyModel
                             viewModel.viewModelScope.launch {

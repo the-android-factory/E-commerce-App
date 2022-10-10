@@ -1,5 +1,6 @@
 package com.androidfactory.fakestore.home.cart
 
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.airbnb.epoxy.EpoxyTouchHelper
 import com.androidfactory.fakestore.MainActivity
 import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.FragmentCartBinding
 import com.androidfactory.fakestore.home.cart.epoxy.CartFragmentEpoxyController
+import com.androidfactory.fakestore.home.cart.epoxy.CartItemEpoxyModel
 import com.androidfactory.fakestore.model.domain.Product
 import com.androidfactory.fakestore.model.ui.UiProduct
 import com.androidfactory.fakestore.model.ui.UiProductInCart
@@ -18,6 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import kotlin.math.max
 
 @AndroidEntryPoint
 class CartFragment: Fragment() {
@@ -63,6 +69,46 @@ class CartFragment: Fragment() {
             }
             epoxyController.setData(viewState)
         }
+
+        setupSwipeToDelete()
+    }
+
+    private fun setupSwipeToDelete() {
+        EpoxyTouchHelper
+            .initSwiping(binding.epoxyRecyclerView)
+            .right()
+            .withTarget(CartItemEpoxyModel::class.java)
+            .andCallbacks(object : EpoxyTouchHelper.SwipeCallbacks<CartItemEpoxyModel>() {
+                override fun onSwipeCompleted(
+                    model: CartItemEpoxyModel?,
+                    itemView: View?,
+                    position: Int,
+                    direction: Int
+                ) {
+                    model?.let { epoxyModel ->
+                        viewModel.viewModelScope.launch {
+                            viewModel.store.update {
+                                return@update viewModel.uiProductInCartUpdater.update(
+                                    productId = epoxyModel.uiProductInCart.uiProduct.product.id,
+                                    currentState = it
+                                )
+                            }
+                        }
+                    }
+                }
+
+                override fun onSwipeProgressChanged(
+                    model: CartItemEpoxyModel?,
+                    itemView: View?,
+                    swipeProgress: Float,
+                    canvas: Canvas?
+                ) {
+                    itemView?.findViewById<View>(R.id.swipeToDismissTextView)?.apply {
+                        translationX = max(-itemView.translationX, -measuredWidth.toFloat())
+                        alpha = 5f * swipeProgress
+                    }
+                }
+            })
     }
 
     override fun onDestroyView() {

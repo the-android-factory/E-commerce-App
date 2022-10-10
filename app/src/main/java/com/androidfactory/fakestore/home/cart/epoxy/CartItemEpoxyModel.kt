@@ -10,14 +10,14 @@ import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
 import com.androidfactory.fakestore.model.ui.UiProductInCart
 
 data class CartItemEpoxyModel(
-    private val uiProductInCart: UiProductInCart,
+    val uiProductInCart: UiProductInCart,
     @Dimension(unit = Dimension.PX) private val horizontalMargin: Int,
     private val onFavoriteClicked: () -> Unit,
-    private val onDeleteClicked: () -> Unit,
     private val onQuantityChanged: (Int) -> Unit
 ) : ViewBindingKotlinModel<EpoxyModelCartProductItemBinding>(R.layout.epoxy_model_cart_product_item) {
 
     override fun EpoxyModelCartProductItemBinding.bind() {
+        swipeToDismissTextView.translationX = 0f
         // Setup our text
         productTitleTextView.text = uiProductInCart.uiProduct.product.title
 
@@ -29,8 +29,6 @@ data class CartItemEpoxyModel(
         }
         favoriteImageView.setIconResource(imageRes)
         favoriteImageView.setOnClickListener { onFavoriteClicked() }
-
-        deleteIconImageView.setOnClickListener { onDeleteClicked() }
 
         // Load our image
         productImageView.load(data = uiProductInCart.uiProduct.product.image)
