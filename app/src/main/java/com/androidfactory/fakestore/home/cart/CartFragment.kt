@@ -15,8 +15,6 @@ import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.FragmentCartBinding
 import com.androidfactory.fakestore.home.cart.epoxy.CartFragmentEpoxyController
 import com.androidfactory.fakestore.home.cart.epoxy.CartItemEpoxyModel
-import com.androidfactory.fakestore.model.domain.Product
-import com.androidfactory.fakestore.model.ui.UiProduct
 import com.androidfactory.fakestore.model.ui.UiProductInCart
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
@@ -26,7 +24,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.max
 
 @AndroidEntryPoint
-class CartFragment: Fragment() {
+class CartFragment : Fragment() {
 
     private var _binding: FragmentCartBinding? = null
     private val binding by lazy { _binding!! }
@@ -50,9 +48,8 @@ class CartFragment: Fragment() {
         })
         binding.epoxyRecyclerView.setController(epoxyController)
 
-        val uiProductsInCartFlow = viewModel.uiProductListReducer.reduce(store = viewModel.store).map { uiProducts ->
-            uiProducts.filter { it.isInCart }
-        }
+        val uiProductsInCartFlow = viewModel.uiProductListReducer.reduce(store = viewModel.store)
+            .map { uiProducts -> uiProducts.filter { it.isInCart } }
 
         combine(
             uiProductsInCartFlow,
@@ -117,7 +114,7 @@ class CartFragment: Fragment() {
     }
 
     sealed interface UiState {
-        object Empty: UiState
-        data class NonEmpty(val products: List<UiProductInCart>): UiState
+        object Empty : UiState
+        data class NonEmpty(val products: List<UiProductInCart>) : UiState
     }
 }
