@@ -21,6 +21,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
+import java.text.NumberFormat
 import kotlin.math.max
 
 @AndroidEntryPoint
@@ -30,6 +32,8 @@ class CartFragment : Fragment() {
     private val binding by lazy { _binding!! }
 
     private val viewModel by viewModels<CartFragmentViewModel>()
+
+    private val currencyFormatter = NumberFormat.getCurrencyInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,9 +69,21 @@ class CartFragment : Fragment() {
                 UiState.NonEmpty(uiProducts)
             }
             epoxyController.setData(viewState)
+            updateTotalLayout(uiProducts)
         }
 
         setupSwipeToDelete()
+
+        binding.checkoutButton.setOnClickListener {
+            // todo
+        }
+    }
+
+    private fun updateTotalLayout(uiProductsInCart: List<UiProductInCart>) {
+        val totalAmount = uiProductsInCart.sumOf { BigDecimal(it.quantity) * it.uiProduct.product.price }
+        val description = "${uiProductsInCart.size} items for ${currencyFormatter.format(totalAmount)}"
+        binding.totalDescription.text = description
+        binding.checkoutButton.isEnabled = uiProductsInCart.isNotEmpty()
     }
 
     private fun setupSwipeToDelete() {

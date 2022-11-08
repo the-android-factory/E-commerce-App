@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/background_rounded_12.xml" value="0.2395" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/background_rounded_top_12.xml" value="0.3385" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_add_24.xml" value="0.276" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_list_24.xml" value="0.276" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_person_24.xml" value="0.276" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/drawable/ic_twotone_delete_24.xml" value="0.2705" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/activity_main.xml" value="0.47755834829443444" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_cart_empty.xml" value="0.515625" />
-        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_cart_product_item.xml" value="0.6166180758017493" />
+        <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_cart_product_item.xml" value="0.5066394279877426" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_divider.xml" value="0.5166666666666667" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_produc_item_shimmer.xml" value="0.515625" />
         <entry key="..\:/Users/domre/AndroidStudioProjects/FakeStore/app/src/main/res/layout/epoxy_model_product_filter.xml" value="0.75" />
