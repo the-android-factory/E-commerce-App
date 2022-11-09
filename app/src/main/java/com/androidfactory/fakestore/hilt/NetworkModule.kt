@@ -1,5 +1,6 @@
 package com.androidfactory.fakestore.hilt
 
+import com.androidfactory.fakestore.hilt.auth.AuthService
 import com.androidfactory.fakestore.hilt.service.ProductsService
 import dagger.Module
 import dagger.Provides
@@ -40,5 +41,11 @@ object NetworkModule {
     @Singleton
     fun providesProductsService(retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesAuthService(retrofit: Retrofit): AuthService {
+        return retrofit.create(AuthService::class.java)
     }
 }
