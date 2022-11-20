@@ -26,13 +26,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         _binding = FragmentProfileBinding.bind(view)
 
         binding.button.setOnClickListener {
-            authViewModel.login(username = "donero", password = "ewedon2")
+            authViewModel.login(username = "donero", password = "ewedon")
         }
 
         authViewModel.store.stateFlow.map {
             it.user
-        }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) {
-            Log.i("USER", it.toString())
+        }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) { user ->
+            Log.i("USER", user.toString())
+
+            binding.label.text = user?.greetingMessage ?: "Sign in"
+            binding.button.isEnabled = user == null
         }
     }
 

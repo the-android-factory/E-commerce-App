@@ -1,5 +1,7 @@
 package com.androidfactory.fakestore.hilt.auth
 
+import com.androidfactory.fakestore.model.domain.user.User
+import com.androidfactory.fakestore.model.mapper.UserMapper
 import com.androidfactory.fakestore.model.network.LoginResponse
 import com.androidfactory.fakestore.model.network.NetworkUser
 import com.androidfactory.fakestore.model.network.post.LoginPostBody

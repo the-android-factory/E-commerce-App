@@ -1,5 +1,7 @@
 package com.androidfactory.fakestore.model.network
 
+import com.androidfactory.fakestore.model.domain.user.Name
+
 data class NetworkUser(
     val __v: Int,
     val address: Address,
@@ -22,9 +24,4 @@ data class NetworkUser(
             val long: String
         )
     }
-
-    data class Name(
-        val firstname: String,
-        val lastname: String
-    )
 }

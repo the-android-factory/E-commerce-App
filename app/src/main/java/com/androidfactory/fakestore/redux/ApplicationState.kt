@@ -2,10 +2,11 @@ package com.androidfactory.fakestore.redux
 
 import com.androidfactory.fakestore.model.domain.Filter
 import com.androidfactory.fakestore.model.domain.Product
+import com.androidfactory.fakestore.model.domain.user.User
 import com.androidfactory.fakestore.model.network.NetworkUser
 
 data class ApplicationState(
-    val user: NetworkUser? = null,
+    val user: User? = null,
     val products: List<Product> = emptyList(),
     val productFilterInfo: ProductFilterInfo = ProductFilterInfo(),
     val favoriteProductIds: Set<Int> = emptySet(),
