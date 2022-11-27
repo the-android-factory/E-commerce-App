@@ -38,4 +38,9 @@ class AuthViewModel @Inject constructor(
             Log.e("LOGIN", response.errorBody()?.byteStream()?.bufferedReader()?.readLine() ?: "Invalid login")
         }
     }
+
+    fun logout() = viewModelScope.launch {
+        store.update { applicationState -> applicationState.copy(user = null) }
+        // traditionally make a call the the BE
+    }
 }
