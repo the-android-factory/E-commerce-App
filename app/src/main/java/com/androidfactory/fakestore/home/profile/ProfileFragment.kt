@@ -42,11 +42,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.epoxyRecyclerView.setController(epoxyController)
 
         authViewModel.store.stateFlow.map {
-            it.user
-        }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) { user ->
-            epoxyController.setData(user)
-            binding.headerTextView.text = user?.greetingMessage ?: "Sign in"
-            binding.infoTextView.text = user?.email
+            it.authState
+        }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) { authState ->
+            epoxyController.setData(authState)
+            binding.headerTextView.text = authState.getGreetingMessage()
+            binding.infoTextView.text = authState.getEmail()
         }
     }
 

@@ -9,10 +9,11 @@
     <View
         android:id="@+id/headerBackground"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="125dp"
         android:background="@drawable/background_rounded_bottom_12"
         android:backgroundTint="?attr/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/epoxyRecyclerView"/>
 
     <TextView
         android:id="@+id/headerTextView"

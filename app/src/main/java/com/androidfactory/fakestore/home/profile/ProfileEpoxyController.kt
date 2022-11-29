@@ -8,20 +8,25 @@ import com.androidfactory.fakestore.databinding.EpoxyModelProfileSignedOutBindin
 import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
 import com.androidfactory.fakestore.extensions.toPx
 import com.androidfactory.fakestore.home.cart.epoxy.DividerEpoxyModel
-import com.androidfactory.fakestore.model.domain.user.User
+import com.androidfactory.fakestore.redux.ApplicationState
 
 class ProfileEpoxyController(
     private val userProfileItemGenerator: UserProfileItemGenerator,
     private val profileUiActions: ProfileUiActions
-) : TypedEpoxyController<User?>() {
+) : TypedEpoxyController<ApplicationState.AuthState>() {
 
-    override fun buildModels(data: User?) {
-        if (data == null) {
-            SignedOutEpoxyModel(onSignIn = { username, password ->
-                profileUiActions.onSignIn(username, password)
-            }).id("signed_out_state").addTo(this)
-        } else {
-            userProfileItemGenerator.buildItems(user = data).forEach { profileItem ->
+    override fun buildModels(data: ApplicationState.AuthState) {
+        if (data is ApplicationState.AuthState.Unauthenticated) {
+            SignedOutEpoxyModel(
+                onSignIn = { username, password ->
+                    profileUiActions.onSignIn(username, password)
+                },
+                errorMessage = data.errorString
+            ).id("signed_out_state").addTo(this)
+        }
+
+        if (data is ApplicationState.AuthState.Authenticated) {
+            userProfileItemGenerator.buildItems(user = data.user).forEach { profileItem ->
                 SignedInItemEpoxyModel(
                     iconRes = profileItem.iconRes,
                     headerText = profileItem.headerText,
@@ -44,13 +49,32 @@ class ProfileEpoxyController(
     }
 
     data class SignedOutEpoxyModel(
-        val onSignIn: (String, String) -> Unit
+        val onSignIn: (String, String) -> Unit,
+        val errorMessage: String?
     ) : ViewBindingKotlinModel<EpoxyModelProfileSignedOutBinding>(R.layout.epoxy_model_profile_signed_out) {
 
         override fun EpoxyModelProfileSignedOutBinding.bind() {
-            button.setOnClickListener {
-                onSignIn("donero", "ewedon")
+            passwordLayout.error = errorMessage
+            signInButton.setOnClickListener {
+                val username = usernameEditText.text?.toString()
+                val password = passwordEditText.text?.toString()
+
+                if (username.isNullOrBlank() || password.isNullOrBlank()) {
+                    passwordLayout.error = "Both fields required"
+                    return@setOnClickListener
+                }
+
+                passwordLayout.error = null
+                onSignIn(username, password)
             }
+        }
+
+        override fun EpoxyModelProfileSignedOutBinding.unbind() {
+            usernameEditText.text = null
+            usernameEditText.clearFocus()
+            passwordEditText.text = null
+            passwordEditText.clearFocus()
+            passwordLayout.error = null
         }
     }
 
