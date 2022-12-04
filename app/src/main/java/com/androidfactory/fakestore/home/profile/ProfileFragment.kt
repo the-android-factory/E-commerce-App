@@ -1,24 +1,16 @@
 package com.androidfactory.fakestore.home.profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
-import com.airbnb.epoxy.TypedEpoxyController
 import com.androidfactory.fakestore.R
-import com.androidfactory.fakestore.databinding.EpoxyModelProfileSignedInItemBinding
-import com.androidfactory.fakestore.databinding.EpoxyModelProfileSignedOutBinding
 import com.androidfactory.fakestore.databinding.FragmentProfileBinding
-import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
-import com.androidfactory.fakestore.extensions.toPx
 import com.androidfactory.fakestore.hilt.auth.AuthViewModel
-import com.androidfactory.fakestore.home.cart.epoxy.DividerEpoxyModel
-import com.androidfactory.fakestore.model.domain.user.User
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -47,6 +39,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             epoxyController.setData(authState)
             binding.headerTextView.text = authState.getGreetingMessage()
             binding.infoTextView.text = authState.getEmail()
+        }
+
+        authViewModel.intentFlow.filterNotNull().asLiveData().observe(viewLifecycleOwner) { intent ->
+            startActivity(intent)
         }
     }
 

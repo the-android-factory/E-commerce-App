@@ -1,5 +1,7 @@
 package com.androidfactory.fakestore.hilt.auth
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidfactory.fakestore.extensions.capitalize
@@ -9,6 +11,9 @@ import com.androidfactory.fakestore.model.network.NetworkUser
 import com.androidfactory.fakestore.redux.ApplicationState
 import com.androidfactory.fakestore.redux.Store
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -20,6 +25,9 @@ class AuthViewModel @Inject constructor(
     private val authRepository: AuthRepository,
     private val userMapper: UserMapper
 ) : ViewModel() {
+
+    private val _intentFlow = MutableStateFlow<Intent?>(null)
+    val intentFlow: StateFlow<Intent?> = _intentFlow
 
     fun ResponseBody?.parseError(): String? {
         return this?.byteStream()?.bufferedReader()?.readLine()?.capitalize()
@@ -54,5 +62,14 @@ class AuthViewModel @Inject constructor(
             applicationState.copy(authState = ApplicationState.AuthState.Unauthenticated())
         }
         // traditionally make a call the the BE
+    }
+
+    fun sendCallIntent() = viewModelScope.launch {
+        val phoneNumber: String = store.read {
+            (it.authState as ApplicationState.AuthState.Authenticated).user.phoneNumber
+        }
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
+        _intentFlow.emit(intent)
     }
 }
