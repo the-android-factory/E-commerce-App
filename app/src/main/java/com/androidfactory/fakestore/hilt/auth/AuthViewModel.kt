@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidfactory.fakestore.extensions.capitalize
+import com.androidfactory.fakestore.model.domain.user.Address
 import com.androidfactory.fakestore.model.mapper.UserMapper
 import com.androidfactory.fakestore.model.network.LoginResponse
 import com.androidfactory.fakestore.model.network.NetworkUser
@@ -71,5 +72,16 @@ class AuthViewModel @Inject constructor(
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel:$phoneNumber")
         _intentFlow.emit(intent)
+    }
+
+    fun sendLocationIntent() = viewModelScope.launch {
+        val address: Address = store.read {
+            (it.authState as ApplicationState.AuthState.Authenticated).user.address
+        }
+//        val intentUri = Uri.parse("geo:${address.lat},${address.long}")
+        val intentUri = Uri.parse("geo:40.7128,-74.0060?q=${Uri.encode("NYC")}") // NYC lat long
+        val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
+        //mapIntent.setPackage("com.google.android.apps.maps")
+        _intentFlow.emit(mapIntent)
     }
 }
