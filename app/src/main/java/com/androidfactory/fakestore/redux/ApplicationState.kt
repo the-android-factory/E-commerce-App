@@ -12,11 +12,16 @@ data class ApplicationState(
     val favoriteProductIds: Set<Int> = emptySet(),
     val expandedProductIds: Set<Int> = emptySet(),
     val inCartProductIds: Set<Int> = emptySet(),
-    val cartQuantitiesMap: Map<Int, Int> = emptyMap() // productId -> quantity
+    val cartQuantitiesMap: Map<Int, Int> = emptyMap(), // productId -> quantity
+    val explorePageMetadata: ExplorePageMetadata = ExplorePageMetadata()
 ) {
     data class ProductFilterInfo(
         val filters: Set<Filter> = emptySet(),
         val selectedFilter: Filter? = null
+    )
+
+    data class ExplorePageMetadata(
+        val selectedProductId: Int = 0
     )
 
     sealed interface AuthState {

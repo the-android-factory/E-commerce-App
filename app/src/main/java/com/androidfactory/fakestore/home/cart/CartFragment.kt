@@ -81,7 +81,8 @@ class CartFragment : Fragment() {
 
     private fun updateTotalLayout(uiProductsInCart: List<UiProductInCart>) {
         val totalAmount = uiProductsInCart.sumOf { BigDecimal(it.quantity) * it.uiProduct.product.price }
-        val description = "${uiProductsInCart.size} items for ${currencyFormatter.format(totalAmount)}"
+        val totalItems = uiProductsInCart.sumOf { it.quantity }
+        val description = "$totalItems items for ${currencyFormatter.format(totalAmount)}"
         binding.totalDescription.text = description
         binding.checkoutButton.isEnabled = uiProductsInCart.isNotEmpty()
     }

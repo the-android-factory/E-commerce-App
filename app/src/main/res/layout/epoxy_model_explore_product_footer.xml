@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:paddingVertical="8dp">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/ratingIndicator"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="12dp"
+        android:max="50"
+        android:progress="37"
+        app:indicatorColor="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@id/ratingTextView"
+        app:layout_constraintEnd_toStartOf="@id/ratingTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ratingTextView"
+        app:trackColor="@color/purple_100"
+        app:trackCornerRadius="12dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ratingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:textColor="@color/purple_900"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ratingIndicator"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginEnd="12dp"
+        tools:text="3.7 / 5.0" />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/quantitySeekbar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:max="20"
+        android:min="1"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progress="4"
+        android:progressBackgroundTint="@color/purple_500"
+        android:progressTint="@color/purple_500"
+        android:thumbTint="@color/purple_900"
+        app:indicatorColor="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@id/quantityTextView"
+        app:layout_constraintEnd_toEndOf="@id/ratingIndicator"
+        app:layout_constraintStart_toStartOf="@id/ratingIndicator"
+        app:layout_constraintTop_toTopOf="@id/quantityTextView"
+        app:trackColor="@color/purple_100" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/purple_900"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/ratingTextView"
+        app:layout_constraintStart_toStartOf="@id/ratingTextView"
+        app:layout_constraintTop_toBottomOf="@id/ratingTextView"
+        app:layout_goneMarginEnd="12dp"
+        tools:text="Qty. 4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addToCartButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="24dp"
+        android:paddingVertical="12dp"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_shopping_cart_24"
+        app:iconGravity="end"
+        app:iconTint="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quantityTextView"
+        app:strokeColor="@color/purple_900"
+        tools:text="Add to cart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

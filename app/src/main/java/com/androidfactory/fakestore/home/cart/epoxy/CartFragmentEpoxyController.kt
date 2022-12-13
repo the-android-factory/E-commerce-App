@@ -47,12 +47,13 @@ class CartFragmentEpoxyController(
                             }
                         },
                         onQuantityChanged = { newQuantity: Int ->
-                            if (newQuantity < 1) return@CartItemEpoxyModel
                             viewModel.viewModelScope.launch {
-                                viewModel.store.update { currentState ->
-                                    val newMapEntry = uiProductInCart.uiProduct.product.id to newQuantity
-                                    val newMap = currentState.cartQuantitiesMap + newMapEntry
-                                    return@update currentState.copy(cartQuantitiesMap = newMap)
+                                viewModel.store.update {
+                                    return@update viewModel.uiProductQuantityUpdater.update(
+                                        productId = uiProductInCart.uiProduct.product.id,
+                                        newQuantity = newQuantity,
+                                        currentState = it
+                                    )
                                 }
                             }
                         }
