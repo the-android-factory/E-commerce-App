@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_explore" />
 
     <fragment
+        android:id="@+id/exploreFragment2"
+        android:name="com.androidfactory.fakestore.home.explorev2.ExploreFragmentV2"
+        android:label="Explore (Compose)"
+        tools:layout="@layout/fragment_explore" />
+
+    <fragment
         android:id="@+id/profileFragment"
         android:name="com.androidfactory.fakestore.home.profile.ProfileFragment"
         android:label="Profile"
