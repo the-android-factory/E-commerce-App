@@ -2,9 +2,8 @@ package com.androidfactory.fakestore.home.cart.epoxy
 
 import android.view.ViewGroup
 import androidx.annotation.Dimension
-import androidx.annotation.Dimension.PX
+import androidx.annotation.Dimension.Companion.PX
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import com.androidfactory.fakestore.R
 import com.androidfactory.fakestore.databinding.EpoxyModelDividerBinding
 import com.androidfactory.fakestore.epoxy.ViewBindingKotlinModel
